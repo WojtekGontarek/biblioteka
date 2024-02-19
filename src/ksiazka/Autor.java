@@ -1,5 +1,7 @@
 package ksiazka;
 
+import java.util.Objects;
+
 public class Autor {
     private final String imie;
     private final String nazwisko;
@@ -41,6 +43,19 @@ public class Autor {
     @Override
     public String toString(){
         String rokSmierci = this.rokSmierci == 0 ? "":String.valueOf(this.rokSmierci);
-        return String.format("%s, %s ($d-%s)", nazwisko, imie, rokUrodzenia, rokSmierci);
+        return String.format("%s, %s (%d-%s)", nazwisko, imie, rokUrodzenia, rokSmierci);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Autor autor = (Autor) o;
+        return rokUrodzenia == autor.rokUrodzenia && rokSmierci == autor.rokSmierci && Objects.equals(imie, autor.imie) && Objects.equals(nazwisko, autor.nazwisko);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(imie, nazwisko, rokUrodzenia, rokSmierci);
     }
 }
