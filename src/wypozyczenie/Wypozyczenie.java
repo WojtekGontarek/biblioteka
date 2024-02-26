@@ -32,4 +32,12 @@ public class Wypozyczenie {
         przewidywanaDataOddania = przewidywanaDataOddania.plusDays(DLUGOSC_WYPOZYCZENIA);
         return przewidywanaDataOddania;
     }
+
+    public LocalDate getDataWypozczenia() {
+        return dataWypozczenia;
+    }
+
+    public String getTytulKsiazki() {
+        return egzemplarz.getKsiazka().getTytul();
+    }
 }
